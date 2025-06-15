@@ -42,7 +42,7 @@ if (!fs.existsSync(htmlPath)) {
   <div class="container">
     <div class="home visible">
       <h1>ChatRandomX</h1>
-      <p>Chatta in modo anonimo con sconosciuti da tutto il mondo.</p>
+      <p>Chatta con nuove persone dall'Italia.</p>
       <input type="text" id="nickname" class="nickname" placeholder="Inserisci il tuo nome" />
       <button onclick="startChat()">Inizia Chat</button>
     </div>

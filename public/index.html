@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="UTF-8" />
-  <title>ChatRandomX</title>
+  <title>ChatRandomMeet</title>
   <style>
-    body {
+    * { box-sizing: border-box; }
+
+body {
       background: #121212;
       color: #fff;
       font-family: sans-serif;
@@ -89,8 +92,8 @@
   <div class="connected-count" id="userCount">👁️ 0</div>
   <div class="container">
     <div class="home visible">
-      <h1>ChatRandomX</h1>
-      <p>Chatta in modo anonimo con sconosciuti da tutto il mondo.</p>
+      <h1>Chat Room Meet</h1>
+      <p>Chatta con nuove persone dall'Italia.</p>
       <input type="text" id="nickname" class="nickname" placeholder="Nome utente" maxlength="12" />
       <button onclick="startChat()">Inizia Chat</button>
     </div>
@@ -103,7 +106,6 @@
       </div>
       <div class="input-area" id="actionButtons" style="margin-top: 1rem;">
         <button onclick="skip()">⏭ Salta</button>
-        <button onclick="stop()">🛑 Stop</button>
         <button onclick="goHome()">🏠 Home</button>
       </div>
     </div>
