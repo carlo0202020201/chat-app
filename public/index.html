@@ -4,16 +4,85 @@
   <meta charset="UTF-8" />
   <title>ChatRandomX</title>
   <style>
-    body { background: #121212; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
-    .container { display: flex; flex-direction: column; height: 100vh; }
-    .home, .chat { flex: 1; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
-    .visible { display: flex; }
-    .messages { height: 300px; width: 90%; max-width: 500px; overflow-y: auto; border: 1px solid #444; background: #222; padding: 1rem; margin-bottom: 1rem; }
-    .input-area { display: flex; gap: 0.5rem; width: 90%; max-width: 500px; }
-    input[type=text] { flex: 1; padding: 0.5rem; background: #333; color: white; border: none; }
-    input.nickname { max-width: 150px; text-align: center; }
-    button { padding: 0.5rem 1rem; background: #444; color: white; border: none; cursor: pointer; }
-    .connected-count { position: absolute; top: 10px; right: 10px; color: #aaa; font-size: 0.9rem; }
+    body {
+      background: #121212;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .home,
+    .chat {
+      flex: 1;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .visible {
+      display: flex;
+    }
+
+    .messages {
+      height: 300px;
+      width: 90%;
+      max-width: 500px;
+      overflow-y: auto;
+      border: 1px solid #444;
+      background: #222;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 0.5rem;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    input[type="text"]:not(.nickname) {
+      flex: 1;
+      padding: 0.5rem;
+      background: #333;
+      color: white;
+      border: none;
+    }
+
+    input.nickname {
+      width: 180px;
+      font-size: 14px;
+      padding: 0.3rem 0.5rem;
+      background: #333;
+      color: white;
+      border: none;
+      text-align: center;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      background: #444;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .connected-count {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -22,8 +91,8 @@
     <div class="home visible">
       <h1>ChatRandomX</h1>
       <p>Chatta in modo anonimo con sconosciuti da tutto il mondo.</p>
-      <input type="text" id="nickname" class="nickname" placeholder="Nome utente" maxlength="12" style="width: 180px; font-size: 14px;" />
-      <button onclick="startChat()" id="startBtn" disabled>Inizia Chat</button>
+      <input type="text" id="nickname" class="nickname" placeholder="Nome utente" maxlength="12" />
+      <button onclick="startChat()">Inizia Chat</button>
     </div>
 
     <div class="chat">
@@ -50,18 +119,11 @@
     const sendBtn = document.getElementById('sendBtn');
     const actionButtons = document.getElementById('actionButtons');
     const userCount = document.getElementById('userCount');
-    const nicknameInput = document.getElementById('nickname');
-    const startBtn = document.getElementById('startBtn');
 
     let nickname = '';
 
-    // Abilita/disabilita il pulsante in base all'input
-    nicknameInput.addEventListener('input', function () {
-      startBtn.disabled = this.value.trim().length === 0;
-    });
-
     function startChat() {
-      nickname = nicknameInput.value.trim();
+      nickname = document.getElementById('nickname').value.trim();
       if (!nickname) {
         alert("Devi inserire un nome!");
         return;
