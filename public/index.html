@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -23,8 +22,8 @@
     <div class="home visible">
       <h1>ChatRandomX</h1>
       <p>Chatta in modo anonimo con sconosciuti da tutto il mondo.</p>
-      <input type="text" id="nickname" class="nickname" placeholder="Inserisci il tuo nome" />
-      <button onclick="startChat()">Inizia Chat</button>
+      <input type="text" id="nickname" class="nickname" placeholder="Nome utente" maxlength="12" style="width: 180px; font-size: 14px;" />
+      <button onclick="startChat()" id="startBtn" disabled>Inizia Chat</button>
     </div>
 
     <div class="chat">
@@ -51,11 +50,18 @@
     const sendBtn = document.getElementById('sendBtn');
     const actionButtons = document.getElementById('actionButtons');
     const userCount = document.getElementById('userCount');
+    const nicknameInput = document.getElementById('nickname');
+    const startBtn = document.getElementById('startBtn');
 
     let nickname = '';
 
+    // Abilita/disabilita il pulsante in base all'input
+    nicknameInput.addEventListener('input', function () {
+      startBtn.disabled = this.value.trim().length === 0;
+    });
+
     function startChat() {
-      nickname = document.getElementById('nickname').value.trim();
+      nickname = nicknameInput.value.trim();
       if (!nickname) {
         alert("Devi inserire un nome!");
         return;
@@ -143,4 +149,3 @@
   </script>
 </body>
 </html>
-  
